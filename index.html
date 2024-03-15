@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
       display: flex;
       justify-content: center;
       margin-top: 15px;
-      margin-left: -15px;
+      margin-left: -50px; 
     }
     .game-container {
       display: flex;
@@ -30,11 +29,27 @@
       padding: 5px 10px;
       border-radius: 5px;
     }
+    .soccer-net {
+      background-color: #ffffff;
+      width: 10px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .left-net {
+      left: 0;
+    }
+    .right-net {
+      right: 0;
+    }
   </style>
 </head>
 <body>
   <div class="game-container">
     <div class="container">
+      <div class="soccer-net left-net"></div>
+      <div class="soccer-net right-net"></div>
       <canvas id="canvas" width="1100" height="600"></canvas>
     </div>
     <div class="button">

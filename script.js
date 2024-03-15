@@ -7,7 +7,7 @@ var restartBtn = document.getElementById("restart-btn");
 var animationId;
 var gameRunning = false;
 var playerMode; 
-var aiDifficulty;
+var aiDifficulty; 
 
 var countdown = 3;
 var countdownInterval;
@@ -34,15 +34,17 @@ var ballY = canvas.height / 2;
 var ballSpeedX = 7; 
 var ballSpeedY = 7; 
 
-var paddleHeight = 120; 
-var paddleWidth = 8; 
+var paddleHeight = 160; 
+var paddleWidth = 10;
 var leftPaddleY = canvas.height / 2 - paddleHeight / 2;
 var rightPaddleY = canvas.height / 2 - paddleHeight / 2;
 var paddleSpeed = 7; 
 
+
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
 var maxScore = 20;
+
 
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
@@ -107,17 +109,16 @@ function update() {
         leftPaddleY += paddleSpeed;
       }
     } else if (playerMode === "ai") {
-      if (ballY > rightPaddleY + paddleHeight / 2) {
-        rightPaddleY += paddleSpeed * 0.8;
-      } else if (ballY < rightPaddleY + paddleHeight / 2) {
-        rightPaddleY -= paddleSpeed * 0.8;
+      var aiTargetY = ballY - paddleHeight / 2;
+      var aiSpeed = paddleSpeed * 0.9; 
+
+      if (rightPaddleY + paddleHeight / 2 < aiTargetY) {
+        rightPaddleY += aiSpeed;
+      } else if (rightPaddleY + paddleHeight / 2 > aiTargetY) {
+        rightPaddleY -= aiSpeed;
       }
 
-      if (wPressed && leftPaddleY > 0) {
-        leftPaddleY -= paddleSpeed;
-      } else if (sPressed && leftPaddleY + paddleHeight < canvas.height) {
-        leftPaddleY += paddleSpeed;
-      }
+      rightPaddleY = Math.max(0, Math.min(rightPaddleY, canvas.height - paddleHeight));
     }
 
     ballX += ballSpeedX;
@@ -181,6 +182,10 @@ function reset() {
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ffffff"; 
+  ctx.fillRect(0, canvas.height / 2 - 50, 10, 100); 
+  ctx.fillRect(canvas.width - 10, canvas.height / 2 - 50, 10, 100); 
 
   ctx.fillStyle = "red";
   ctx.fillRect(0, leftPaddleY, paddleWidth, paddleHeight);
