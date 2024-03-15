@@ -33,7 +33,6 @@
   text-align: center;
 }
 
-
 canvas {
   border: 2px solid #333; 
   background: #000; 
@@ -70,7 +69,6 @@ canvas {
   border: 1px solid #888;
   width: 80%;
 }
-
 
 .modal-close {
   color: #aaa;
