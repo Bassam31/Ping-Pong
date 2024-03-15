@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ping Pong Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    canvas {
+      border: 1px solid black;
+      background: #008000; 
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      margin-left: -15px;
+    }
+    .game-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .scoreboard {
+      background-color: black;
+      color: yellow;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="container">
+      <canvas id="canvas" width="1100" height="600"></canvas>
+    </div>
+    <div class="button">
+      <div class="d-flex justify-content-center">
+        <button id="start-btn" class="btn">Start</button>
+        <button id="pause-btn" class="btn">Pause</button>
+        <button id="restart-btn" class="btn">Restart</button>
+      </div>
+    </div>
+    <p class="control">Control: Player Left(W and S) | Player Right(↑ and ↓)</p>
+    <div class="scoreboard" id="scoreboard">
+      User: <span id="user-score">0</span> | AI: <span id="ai-score">0</span>
+    </div>
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" id="message-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h5 id="message"></h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="message-modal-close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" id="options-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h5>Choose Game Mode</h5>
+          <button id="play-with-player-btn" class="btn">Play with Player</button>
+          <button id="play-with-ai-btn" class="btn">Play with AI</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
